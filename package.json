@@ -1,6 +1,6 @@
 {
   "name": "system-clipboard-events-notifications",
   "scripts": {
-    "start": "deno run index.js --allow-run"
+    "start": "deno run index.js --allow-run --unstable"
   }
 }
