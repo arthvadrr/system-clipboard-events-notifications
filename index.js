@@ -1,20 +1,23 @@
 import { notify } from "https://deno.land/x/notifier/mod.ts"
-import { readKeypress } from "https://deno.land/x/keypress@0.0.8/mod.ts";
+import { read } from "https://deno.land/x/copy_paste/mod.ts";
 Deno.setRaw = Deno.stdin.setRaw
 
+const textDecoder = new TextDecoder();
+let previous = undefined
+
 async function Input_Observer () {
-  // Keep the script alive
-  setInterval(() => {}, 1 << 30)
+  let utf8 = await read()
+  const current = textDecoder.decode(utf8);
 
-  for await (const keypress of readKeypress()) {
-    console.log(keypress);
-
-    if (keypress.ctrlKey && keypress.key === 'c') {
-        Deno.exit(0);
-    }
+  if (previous === undefined) {
+    previous = current
+    return
   }
 
-  await notify("This is a title", "This is a message")
+  if (current !== previous) {
+    await notify("Copied", `${current}`)
+    previous = current
+  }
 }
 
-Input_Observer()
+setInterval(Input_Observer, 300);
