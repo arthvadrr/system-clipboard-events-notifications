@@ -1,13 +1,23 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-APP_NAME="system-clipboard-events-notifications"
-lsappinfo setinfo --name $APP_NAME
-echo $$
-echo $0
-if [[ `pgrep -f $0` != "$$" ]]; then
-        echo "Another instance of shell already exist! Exiting"
-        exit
-fi
+PROCESS=$$
+
 cd $SCRIPT_DIR
-nohup bash -c "exec -a ${APP_NAME} deno run --allow-run index.js &" &
-echo $$
-exit 0
+
+CURRENT_PROCESS_PID=$(<process.pid)
+
+if ps -p $CURRENT_PROCESS_PID > /dev/null
+then
+   kill $CURRENT_PROCESS_PID
+fi
+
+sleep 1
+
+nohup deno run --allow-run index.js > /dev/null 2>&1 &
+
+sleep 1
+
+echo $! > process.pid
+
+sleep 1
+
+exit $$

@@ -2,5 +2,8 @@
   "name": "system-clipboard-events-notifications",
   "scripts": {
     "start": "deno run --allow-run index.js"
+  },
+  "dependencies": {
+    "play-sound": "^1.1.5"
   }
 }
