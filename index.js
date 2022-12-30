@@ -6,7 +6,9 @@ import { read } from "https://deno.land/x/copy_paste/mod.ts"
 const $sh_setCWD = 'SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )'
 const $sh_cd = 'cd $SCRIPT_DIR'
 const $sh_playAudio = 'afplay inc/audio/copy-long.mp3'
-const $sh_subprocess = Deno.run({ cmd });
+const selectedAudio = 'copy-long.mp3'
+const cmd = ["afplay", `inc/audio/${selectedAudio}`]
+const $sh_subprocess = (cmd) => Deno.run({ cmd })
 
 // const $sh_subprocess = Deno.run({ 
 //   cmd: [`
@@ -34,11 +36,11 @@ async function Input_Observer () {
     }
 
     if (!useNotification) {
-      await $sh_subprocess()
+      await $sh_subprocess(cmd)
     }
 
     previous = current
   }
 }
 
-setInterval(Input_Observer, 1000);
+setInterval(Input_Observer, 500);
