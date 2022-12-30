@@ -6,17 +6,9 @@ import { read } from "https://deno.land/x/copy_paste/mod.ts"
 const $sh_setCWD = 'SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )'
 const $sh_cd = 'cd $SCRIPT_DIR'
 const $sh_playAudio = 'afplay inc/audio/copy-long.mp3'
-const selectedAudio = 'copy-long.mp3'
+const selectedAudio = 'copy.mp3'
 const cmd = ["afplay", `inc/audio/${selectedAudio}`]
 const $sh_subprocess = (cmd) => Deno.run({ cmd })
-
-// const $sh_subprocess = Deno.run({ 
-//   cmd: [`
-//     ${$sh_setCWD}
-//     ${$sh_cd}
-//     ${$sh_playAudio}
-//     `]
-// })
 
 const textDecoder = new TextDecoder()
 let previous = undefined
@@ -43,4 +35,4 @@ async function Input_Observer () {
   }
 }
 
-setInterval(Input_Observer, 500);
+setInterval(Input_Observer, 100);
