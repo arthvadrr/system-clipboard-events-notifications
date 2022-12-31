@@ -1,5 +1,5 @@
 # system-clipboard-events-notifications
-Sends notifications to the os for clipboard events. Meant to provide a audio and visual confirmation of clipboard keyboard shortcuts.
+Sends notifications to the os for clipboard events. Meant to provide an audio and/or visual confirmation of clipboard keyboard shortcuts globally.
 
 ## Requirements
 1. possibly osascript. The notifier declares this as a dependency, however the notification is working on my machine without it, so this needs further testing.
