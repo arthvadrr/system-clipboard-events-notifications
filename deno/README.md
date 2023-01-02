@@ -15,6 +15,7 @@ Sends notifications to the os for clipboard events. Meant to provide an audio an
 1. Process runs under name "deno"
 
 ## TODO
+1. Forget Deno, rewriting in Swift and C#
 1. Create a settings bash script
 1. Add more sounds
 1. Find out why the shell isn't closing after launching
