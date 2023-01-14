@@ -8,9 +8,6 @@ Sends notifications to the os for clipboard events. Meant to provide an audio an
 
 ### MacOS
 
-## Settings (settings.json)
-### "sound"
-
 ## Notes
 1. Process runs under name "deno"
 
