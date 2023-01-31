@@ -35,4 +35,4 @@ async function Input_Observer () {
   }
 }
 
-setInterval(Input_Observer, 100);
+setInterval(Input_Observer, 300);
